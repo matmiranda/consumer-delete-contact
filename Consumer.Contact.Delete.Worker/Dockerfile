@@ -4,13 +4,13 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["CriarContatos.Api/CriarContatos.Api.csproj", "CriarContatos.Api/"]
-COPY ["CriarContatos.Domain/CriarContatos.Domain.csproj", "CriarContatos.Domain/"]
-COPY ["CriarContatos.Infrastructure/CriarContatos.Infrastructure.csproj", "CriarContatos.Infrastructure/"]
-COPY ["CriarContatos.Service/CriarContatos.Service.csproj", "CriarContatos.Service/"]
-RUN dotnet restore "CriarContatos.Api/CriarContatos.Api.csproj"
+COPY ["Consumer.Contact.Delete.Worker/Consumer.Contact.Delete.ApWorkeri.csproj", "Consumer.Contact.Delete.Worker/"]
+COPY ["Consumer.Contact.Delete.Domain/Consumer.Contact.Delete.Domain.csproj", "Consumer.Contact.Delete.Domain/"]
+COPY ["Consumer.Contact.Delete.Infrastructure/Consumer.Contact.Delete.Infrastructure.csproj", "Consumer.Contact.Delete.Infrastructure/"]
+COPY ["Consumer.Contact.Delete.Service/Consumer.Contact.Delete.Service.csproj", "Consumer.Contact.Delete.Service/"]
+RUN dotnet restore "Consumer.Contact.Delete.Worker/Consumer.Contact.Delete.Worker.csproj"
 COPY . .
-WORKDIR "/src/CriarContatos.Api"
+WORKDIR "/src/Consumer.Contact.Delete.Worker"
 RUN dotnet build -c Release -o /app/build
 RUN dotnet publish -c Release -o /app/publish
 
@@ -18,4 +18,4 @@ FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 ENV ASPNETCORE_URLS=http://+:80
-ENTRYPOINT ["dotnet", "CriarContatos.Api.dll"]
+ENTRYPOINT ["dotnet", "Consumer.Contact.Delete.Worker.dll"]
