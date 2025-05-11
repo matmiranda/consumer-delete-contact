@@ -1,1 +1,1 @@
-# consumer-delete-contact
+# consumer-worker-contact-delete
