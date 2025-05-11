@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: consumer-criar-contatos-deployment
+  name: consumer-deletar-contatos-deployment
   labels:
-    app: consumer-criar-contatos
+    app: consumer-deletar-contatos
     tier: backend
     environment: production
   annotations:
@@ -12,30 +12,30 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: consumer-criar-contatos
+      app: consumer-deletar-contatos
   template:
     metadata:
       labels:
-        app: consumer-criar-contatos
+        app: consumer-deletar-contatos
         tier: backend
         environment: production
       annotations:
-        description: "Pod do microsserviço consumer-criar-contatos"
+        description: "Pod do microsserviço consumer-deletar-contatos"
     spec:
       containers:
-        - name: consumer-criar-contatos
-          image: containerfiap.azurecr.io/consumer-criar-contatos:latest
+        - name: consumer-deletar-contatos
+          image: containerfiap.azurecr.io/consumer-deletar-contatos:latest
           ports:
             - containerPort: 80
           envFrom:
             - configMapRef:
-                name: consumer-criar-contatos-configmap
+                name: consumer-deletar-contatos-configmap
           volumeMounts:
-            - name: consumer-criar-contatos-volume
-              mountPath: /app/logs/consumer-criar-contatos
+            - name: consumer-deletar-contatos-volume
+              mountPath: /app/logs/consumer-deletar-contatos
       imagePullSecrets:
         - name: acr-auth
       volumes:
-        - name: consumer-criar-contatos-volume
+        - name: consumer-deletar-contatos-volume
           persistentVolumeClaim:
-            claimName: consumer-criar-contatos-persistent-volume-claim
+            claimName: consumer-deletar-contatos-persistent-volume-claim

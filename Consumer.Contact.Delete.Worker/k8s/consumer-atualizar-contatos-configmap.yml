@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: consumer-criar-contatos-configmap
+  name: consumer-deletar-contatos-configmap
   labels:
-    app: consumer-criar-contatos
+    app: consumer-deletar-contatos
     tier: backend
   annotations:
-    description: "Configurações externas para o microsserviço consumer-criar-contatos"
+    description: "Configurações externas para o microsserviço consumer-deletar-contatos"
 data:
   Logging__LogLevel__Default: "Information"
   Logging__LogLevel__Microsoft__AspNetCore: "Warning"
@@ -14,6 +14,6 @@ data:
   RabbitMQSettings__Host: "20.206.204.96"
   RabbitMQSettings__Username: "fiaprabbitmq"
   RabbitMQSettings__Password: "fiaprabbitmq123@"
-  RabbitMQSettings__QueueName: "criar_contatos"
+  RabbitMQSettings__QueueName: "deletar_contatos"
   ApiAzure__Key: "f51a99ebaae9465c9bba4e2f48fbd7a0"
   ApplicationInsights__InstrumentationKey: "ba3be08c-ad9c-4b24-b905-73b8ae55bfcc"
