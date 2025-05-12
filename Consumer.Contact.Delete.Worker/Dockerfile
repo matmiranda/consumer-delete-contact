@@ -4,7 +4,7 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
-COPY ["Consumer.Contact.Delete.Worker/Consumer.Contact.Delete.ApWorkeri.csproj", "Consumer.Contact.Delete.Worker/"]
+COPY ["Consumer.Contact.Delete.Worker/Consumer.Contact.Delete.Worker.csproj", "Consumer.Contact.Delete.Worker/"]
 COPY ["Consumer.Contact.Delete.Domain/Consumer.Contact.Delete.Domain.csproj", "Consumer.Contact.Delete.Domain/"]
 COPY ["Consumer.Contact.Delete.Infrastructure/Consumer.Contact.Delete.Infrastructure.csproj", "Consumer.Contact.Delete.Infrastructure/"]
 COPY ["Consumer.Contact.Delete.Application/Consumer.Contact.Delete.Application.csproj", "Consumer.Contact.Delete.Application/"]
