@@ -1,13 +1,13 @@
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY ["Consumer.Contact.Delete.Worker/Consumer.Contact.Delete.ApWorkeri.csproj", "Consumer.Contact.Delete.Worker/"]
 COPY ["Consumer.Contact.Delete.Domain/Consumer.Contact.Delete.Domain.csproj", "Consumer.Contact.Delete.Domain/"]
 COPY ["Consumer.Contact.Delete.Infrastructure/Consumer.Contact.Delete.Infrastructure.csproj", "Consumer.Contact.Delete.Infrastructure/"]
-COPY ["Consumer.Contact.Delete.Service/Consumer.Contact.Delete.Service.csproj", "Consumer.Contact.Delete.Service/"]
+COPY ["Consumer.Contact.Delete.Application/Consumer.Contact.Delete.Application.csproj", "Consumer.Contact.Delete.Application/"]
 RUN dotnet restore "Consumer.Contact.Delete.Worker/Consumer.Contact.Delete.Worker.csproj"
 COPY . .
 WORKDIR "/src/Consumer.Contact.Delete.Worker"
